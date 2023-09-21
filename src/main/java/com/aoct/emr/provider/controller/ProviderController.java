@@ -70,7 +70,8 @@ public class ProviderController {
     
     @PostMapping("/getProviderWorkingScheduleByDate")
     public List<ProviderWorkingScheduleResponse> getProviderWorkingSchedule(@RequestBody GetProviderWorkingScheduleUIReq request) {
-        return bl.getProviderWorkingSchedule(request);
+       // return bl.getProviderWorkingSchedule(request);
+    	return bl.getProviderScheduleV2(request);
     }
 
 

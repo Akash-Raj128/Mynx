@@ -9,5 +9,6 @@ public class JwtRequest {
 	
 	private String email;
 	private String password;
+	private String newPassword;
 
 }

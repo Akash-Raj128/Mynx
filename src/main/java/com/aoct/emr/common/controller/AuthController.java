@@ -40,17 +40,13 @@ public class AuthController {
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	@ExceptionHandler(BadCredentialsException.class)
-    public String exceptionHandler() {
-        return "Credentials Invalid !!";
-    }
-    //    /auth/createUser
-    
-    @GetMapping("/createUser")
-    public String createUser()
-    {
-    	return "hello";
-    }
+	
+	@PostMapping("/forgotPassword")
+	public String forgotPassword(@RequestBody JwtRequest request)
+	{
+		return authBl.forgotPassword(request);
+	}
+
 
 
 }
