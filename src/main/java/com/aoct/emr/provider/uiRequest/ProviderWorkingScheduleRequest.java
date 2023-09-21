@@ -25,4 +25,5 @@ public class ProviderWorkingScheduleRequest {
     private LocalDate startDate;
     private LocalDate endDate;
     private List<DayOfWeek> days;
+    private String dates;
 }

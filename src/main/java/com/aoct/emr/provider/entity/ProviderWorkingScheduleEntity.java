@@ -50,4 +50,6 @@ public class ProviderWorkingScheduleEntity {
     @ManyToOne
     @JoinColumn(name = "providerId")
     private ProviderEntity provider;
+    
+    private String dates;
 }

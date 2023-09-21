@@ -4,11 +4,14 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.aoct.emr.communication.bl.EmailUiRequest;
 import com.aoct.emr.communication.config.TwilioConfig;
 import com.aoct.emr.communication.response.OtpUiResponse;
 import com.aoct.emr.communication.uiRequest.OtpUiRequest;
@@ -22,6 +25,12 @@ public class SmsService {
 
 	@Autowired
 	private TwilioConfig twilioConfig;
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
+	 
+    @Value("${spring.mail.username}") private String sender;
+	
 	
 	Map<String, String> otpMap = new HashMap<>();
 
@@ -54,8 +63,35 @@ public class SmsService {
 		}
 	}
 
-	private String generateOTP() {
+	public String generateOTP() {
 		return new DecimalFormat("000000").format(new Random().nextInt(999999));
 	}
+
+	public String sendSimpleMail(EmailUiRequest request) {
+		// TODO Auto-generated method stub
+		
+
+		 try {
+			 
+	            SimpleMailMessage mailMessage
+	                = new SimpleMailMessage();
+	 
+	            mailMessage.setFrom(sender);
+	            mailMessage.setTo(request.getRecipient());
+	            mailMessage.setText(request.getMsgBody());
+	            mailMessage.setSubject(request.getSubject());
+	 
+	            javaMailSender.send(mailMessage);
+	            return "Mail Sent Successfully...";
+	        }
+	 
+	        catch (Exception e) {
+	            return "Error while Sending Mail";
+	        }
+		
+		
+	}
+	
+	
 
 }

@@ -16,7 +16,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class TokenGenerator {
 	
 	//requirement :
-    public static final long JWT_TOKEN_VALIDITY =1000; //value in second
+    public static final long JWT_TOKEN_VALIDITY =1800; //value in second
 
     //    public static final long JWT_TOKEN_VALIDITY =  60;
     private String secret = "afafasfafafasfasfasfafacasdasfasxASFACASDFACASDFASFASFDAFASFASDAADSCSDFADCVSGCFVADXCcadwavfsfarvf";
