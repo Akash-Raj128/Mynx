@@ -31,4 +31,12 @@ public class PrescriptionService {
     public PrescriptionEntity getPrescriptionById(Long prescriptionId) {
         return repo.getReferenceById(prescriptionId);
     }
+
+    public void deletePrescriptionById(Long prescriptionId) {
+        repo.deleteById(prescriptionId);
+    }
+
+    public List<PrescriptionEntity> getAllPrescriptions() {
+        return repo.findAll();
+    }
 }

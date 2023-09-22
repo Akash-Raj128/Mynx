@@ -96,7 +96,15 @@ public class PatientController {
 	public PrescriptionUiResponse getPrescriptionById(@PathVariable Long prescriptionId){
 		return bl.getPrescriptionById(prescriptionId);
 	}
+	@DeleteMapping("/deletePrescriptionById/{prescriptionId}")
+	public void deletePrescription(@PathVariable Long prescriptionId){
+		bl.deletePrescriptionById(prescriptionId);
+	}
 
+	@GetMapping("/getAllPrescriptions")
+	public List<PrescriptionUiResponse> getAllPrescriptions(){
+		return bl.getAllPrescriptions();
+	}
 	@GetMapping("/getAllAppointmentByPatientId/{patientId}")
 	public List<AppointmentUiResponse> getAllAppointmentsByPatientId(@PathVariable Long patientId) {
 
@@ -111,5 +119,6 @@ public class PatientController {
 		appointments.sort(Comparator.comparing(AppointmentUiResponse::getScheduleDate));
 		return appointments;
 	}
+
 
 }

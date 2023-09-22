@@ -212,6 +212,17 @@ public class PatientBl {
         return responses;
     }
 
+    public void deletePrescriptionById(Long prescriptionId) {
+        prescriptionService.deletePrescriptionById(prescriptionId);
+    }
+
+    public List<PrescriptionUiResponse> getAllPrescriptions() {
+        List<PrescriptionEntity> prescriptions=prescriptionService.getAllPrescriptions();
+
+        List<PrescriptionUiResponse> response=PrescriptionHelper.convertListOfPrescriptionUiResponse(prescriptions);
+        return response;
+    }
+
 
 
 	/*	will integrate this once the doctor module is ready
